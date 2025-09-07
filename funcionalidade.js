@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const entradaIdade = document.getElementById('entradaIdade');
     const entradaCurso = document.getElementById('entradaCurso');
     const listaUsuarios = document.getElementById('listaUsuarios');
+    const btnSalvar = document.getElementById('btnSalvar');
+    const btnExcluir = document.getElementById('btnExcluir');
 
     // Função para salvar os dados no LocalStorage como array de objetos:
     function salvarDados() {
