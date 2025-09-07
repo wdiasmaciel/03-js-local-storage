@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Salvar a lista atualizada no LocalStorage:
         localStorage.setItem('usuarios', JSON.stringify(usuarios));
         exibirUsuarios();
-        entradaNome = entradaIdade = entradaCurso = "";
+        entradaNome.value = entradaIdade.value = entradaCurso.value = "";
     }
 
     // Função para exibir a lista de usuários salvos:
