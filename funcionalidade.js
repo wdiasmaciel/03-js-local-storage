@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         salvar();
     });
 
-    // Evento de submissão do formulário ao clicar no botão de excluir:
+    // Evento do botão de exclusão:
     btnExcluir.addEventListener('click', () => {
         // Excluir os dados no LocalStorage:
         if (confirm("Tem certeza que deseja excluir todos os dados?")) {
