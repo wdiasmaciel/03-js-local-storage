@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnExcluir = document.getElementById('btnExcluir');
 
     // Função para salvar os dados no LocalStorage como array de objetos:
-    function salvarDados() {
+    function salvar() {
         const usuario = {
             nome: entradaNome.value,
             idade: entradaIdade.value,
@@ -23,12 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Salvar a lista atualizada no LocalStorage:
         localStorage.setItem('usuarios', JSON.stringify(usuarios));
-        exibirUsuarios();
+        exibir();
         entradaNome.value = entradaIdade.value = entradaCurso.value = "";
     }
 
     // Função para exibir a lista de usuários salvos:
-    function exibirUsuarios() {
+    function exibir() {
         // Limpar a lista atual:
         listaUsuarios.innerHTML = '';
 
@@ -43,15 +43,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Evento de submissão do formulário ao clicar no botão de salvar:
+    btnSalvar.addEventListener('submit', (evento) => {
+        // Previne o comportamento padrão do formulário (recarregar a página):
+        evento.preventDefault();
+
+        // Salva os dados no LocalStorage:
+        salvar();
+    });
+
     // Evento de submissão do formulário:
     formularioUsuario.addEventListener('submit', (evento) => {
         // Previne o comportamento padrão do formulário (recarregar a página):
-        evento.preventDefault(); 
+        evento.preventDefault();
 
         // Salva os dados no LocalStorage:
-        salvarDados(); 
+        salvar();
+    });
+
+    // Evento de submissão do formulário ao clicar no botão de excluir:
+    btnExcluir.addEventListener('click', () => {
+        // Excluir os dados no LocalStorage:
+        if (confirm("Tem certeza que deseja excluir todos os dados?")) {
+            localStorage.removeItem("usuarios");
+            listaUsuarios.innerHTML = '';
+        }
     });
 
     // Exibir a lista de usuários quando a página for carregada pelo navegador:
-    exibirUsuarios();
+    exibir();
 });
